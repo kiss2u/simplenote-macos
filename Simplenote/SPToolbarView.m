@@ -155,9 +155,16 @@
 - (void)applyStyle {
     [self applySearchBoxStyle];
     [splitter setFillColor:[self.theme colorForKey:@"dividerColor"]];
+    [self setMaterial:NSVisualEffectMaterialMenu];
+    [self setBlendingMode:NSVisualEffectBlendingModeWithinWindow];
 }
 
 - (void)applySearchBoxStyle {
+    if (@available(macOS 10.14, *)) {
+        // Dark theme finally well supported in Mojave! No tweaks needed.
+        return;
+    }
+    
     VSTheme *theme = [[VSThemeManager sharedManager] theme];
     [searchField setTextColor:[self.theme colorForKey:@"textColor"]];
     

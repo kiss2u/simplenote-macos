@@ -19,6 +19,7 @@
     IBOutlet NSMenu *trashDropdownMenu;
     IBOutlet NSMenu *findMenu;
     IBOutlet NSArrayController *notesArrayController;
+    IBOutlet NSVisualEffectView *rootVisualEffectView;
 }
 
 @property (strong) IBOutlet SPTableView *tableView;

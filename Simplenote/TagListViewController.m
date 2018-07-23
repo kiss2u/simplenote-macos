@@ -76,6 +76,9 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tagAddedFromEditor:) name:SPTagAddedFromEditorNotificationName object:nil];
     
+    [rootVisualEffectView setMaterial:NSVisualEffectMaterialSidebar];
+    [rootVisualEffectView setBlendingMode:NSVisualEffectBlendingModeBehindWindow];
+    
     awake = YES;
 }
 
@@ -711,8 +714,8 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 
 - (void)applyStyle
 {
-    [tableView setBackgroundColor:[[[VSThemeManager sharedManager] theme] colorForKey:@"tableViewBackgroundColor"]];
-    [tagBox setFillColor:[[[VSThemeManager sharedManager] theme] colorForKey:@"tableViewBackgroundColor"]];
+    [tableView setBackgroundColor:[NSColor clearColor]];
+    [tagBox setFillColor:[NSColor clearColor]];
     [self reloadDataAndPreserveSelection];
 }
 

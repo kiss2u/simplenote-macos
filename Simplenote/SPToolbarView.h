@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "NoteListViewController.h"
 
-@interface SPToolbarView : NSView
+@interface SPToolbarView : NSVisualEffectView
 {
     IBOutlet NSWindow *window;
     IBOutlet NSButton *addButton;
