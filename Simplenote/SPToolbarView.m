@@ -52,6 +52,11 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tagsDidLoad:) name:kTagsDidLoad object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(trashDidEmpty:) name:kDidEmptyTrash object:nil];
+    
+    if (@available(macOS 10.14, *)) {
+        [self setMaterial:NSVisualEffectMaterialMenu];
+        [self setBlendingMode:NSVisualEffectBlendingModeWithinWindow];
+    }
 
     [self applyStyle];
 }
@@ -155,8 +160,18 @@
 - (void)applyStyle {
     [self applySearchBoxStyle];
     [splitter setFillColor:[self.theme colorForKey:@"dividerColor"]];
-    [self setMaterial:NSVisualEffectMaterialMenu];
-    [self setBlendingMode:NSVisualEffectBlendingModeWithinWindow];
+    
+    if (@available(macOS 10.14, *)) {
+        [splitter setFillColor:NSColor.clearColor];
+        NSString *interfaceStyle = [[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"];
+        if (interfaceStyle != nil && [interfaceStyle isEqualToString:@"Dark"]) {
+            [bottomSeparator setFillColor:NSColor.blackColor];
+        } else {
+            [bottomSeparator setFillColor:NSColor.separatorColor];
+        }
+    } else {
+        [bottomSeparator setFillColor:[self.theme colorForKey:@"dividerColor"]];
+    }
 }
 
 - (void)applySearchBoxStyle {

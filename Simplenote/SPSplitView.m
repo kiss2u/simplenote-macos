@@ -57,7 +57,16 @@ const CGFloat SPSplitViewDefaultWidth = 120.0;
         [[[[VSThemeManager sharedManager] theme] colorForKey:@"tableViewBackgroundColor"] set];
         NSRectFill(rect);
     } else {
-        [[[[VSThemeManager sharedManager] theme] colorForKey:@"dividerColor"] set];
+        if (@available(macOS 10.14, *)) {
+            NSString *interfaceStyle = [[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"];
+            if (interfaceStyle != nil && [interfaceStyle isEqualToString:@"Dark"]) {
+                [NSColor.blackColor set];
+            } else {
+                [NSColor.separatorColor set];
+            }
+        } else {
+            [[[[VSThemeManager sharedManager] theme] colorForKey:@"dividerColor"] set];
+        }
         NSRectFill(rect);
     }
 }

@@ -208,11 +208,20 @@
                         <action selector="toggleMarkdownView:" target="1107" id="Ch7-3f-k9E"/>
                     </connections>
                 </button>
+                <box boxType="custom" borderWidth="0.0" title="Box" id="e4e-Pa-f5D">
+                    <rect key="frame" x="0.0" y="0.0" width="901" height="1"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <view key="contentView" id="twV-kl-GVY">
+                        <rect key="frame" x="0.0" y="0.0" width="901" height="1"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                </box>
             </subviews>
             <connections>
                 <outlet property="actionButton" destination="1601" id="gdu-Es-X6I"/>
                 <outlet property="addButton" destination="987" id="1424"/>
                 <outlet property="arrayController" destination="573" id="1148"/>
+                <outlet property="bottomSeparator" destination="e4e-Pa-f5D" id="9hO-Go-pP4"/>
                 <outlet property="historyButton" destination="7hm-UJ-0zw" id="1wy-uD-TOl"/>
                 <outlet property="noteEditor" destination="934" id="1154"/>
                 <outlet property="previewButton" destination="OMI-hx-wfj" id="XYV-Pc-8mE"/>

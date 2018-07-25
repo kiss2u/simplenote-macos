@@ -135,10 +135,10 @@ static NSColor *colorWithHexString(NSString *hexString);
 
 - (NSColor *)colorForKey:(NSString *)key {
     
-    // Special overrides for macOS Mojave
+    // Special overrides for macOS Mojave and beyond
     if (@available(macOS 10.14, *)) {
         if ([key isEqualToString:@"dividerColor"]) {
-            return NSColor.separatorColor;
+            return NSColor.gridColor;
         } else if ([key isEqualToString:@"tableViewBackgroundColor"]) {
             return NSColor.controlBackgroundColor;
         } else if ([key isEqualToString:@"textColor"] || [key isEqualToString:@"noteHeadlineFontColor"]) {

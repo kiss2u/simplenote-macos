@@ -25,6 +25,7 @@
     IBOutlet NoteListViewController *tableViewController;
     IBOutlet NSBox *splitter;
     IBOutlet NSBox *searchBox;
+    IBOutlet NSBox *bottomSeparator;
     IBOutlet NSSearchField *searchField;
 }
 
