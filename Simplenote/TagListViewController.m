@@ -483,7 +483,11 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 {
     SPTableRowView *rowView = [[SPTableRowView alloc] initWithFrame:NSZeroRect];
     rowView.drawBorder = NO;
-    rowView.grayBackground = YES;
+    if (@available(macOS 10.14, *)) {
+        rowView.grayBackground = NO;
+    } else {
+        rowView.grayBackground = YES;
+    }
     
     return rowView;
 }

@@ -136,15 +136,20 @@ static CGFloat SPTagCellPopUpButtonAlpha    = 0.5f;
 
 - (void)updateTextAndImageColors
 {
-    self.textField.textColor    = _highlighted ? [self.theme colorForKey:@"tintColor"] : [self.theme colorForKey:@"textColor"];
-    self.imageView.image        = self.highlighted ? self.imageHighlighted : self.image;
-
-    CGFloat alphaValue          = !_highlighted && _mouseInside ? 0.6f : 1.0f;
-    self.imageView.wantsLayer   = YES;
-    self.imageView.alphaValue   = alphaValue;
-
-    self.textField.wantsLayer   = YES;
-    self.textField.alphaValue   = alphaValue;
+    if (@available(macOS 10.14, *)) {
+        self.textField.textColor = [self.theme colorForKey:@"textColor"];
+        self.imageView.image = self.image;
+    } else {
+        self.textField.textColor    = _highlighted ? [self.theme colorForKey:@"tintColor"] : [self.theme colorForKey:@"textColor"];
+        self.imageView.image        = self.highlighted ? self.imageHighlighted : self.image;
+        
+        CGFloat alphaValue          = !_highlighted && _mouseInside ? 0.6f : 1.0f;
+        self.imageView.wantsLayer   = YES;
+        self.imageView.alphaValue   = alphaValue;
+        
+        self.textField.wantsLayer   = YES;
+        self.textField.alphaValue   = alphaValue;
+    }
 }
 
 - (void)setSelected:(BOOL)selected
